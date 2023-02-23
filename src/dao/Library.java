@@ -1,3 +1,5 @@
+package dao;
+
 /*
 Ben Miller - 2022-02-22
 An interface defining the necessary behaviour for and properties of
