@@ -35,6 +35,6 @@ public class Studio {
     @Override
     public String toString() {
         return "Studio Name: " + this.getName() + "\n"
-                + "Address: " + this.getAddress().toString() + "\n";
+                + "Studio Address:\n" + this.getAddress().toString();
     }
 }

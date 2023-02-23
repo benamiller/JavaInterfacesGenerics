@@ -7,12 +7,12 @@ It declares common properties and behaviour of each dto.Media subtype
 public class Media {
     private String title;
     private String releaseDate;
-    private String userNotes;
+    private String[] userNotes;
 
     public Media() {
 
     }
-    public Media(String title, String releaseDate, String userNotes) {
+    public Media(String title, String releaseDate, String[] userNotes) {
         this.title = title;
         this.releaseDate = releaseDate;
         this.userNotes = userNotes;
@@ -34,11 +34,11 @@ public class Media {
         this.releaseDate = releaseDate;
     }
 
-    public String getUserNotes() {
+    public String[] getUserNotes() {
         return userNotes;
     }
 
-    public void setUserNotes(String userNotes) {
+    public void setUserNotes(String[] userNotes) {
         this.userNotes = userNotes;
     }
 }

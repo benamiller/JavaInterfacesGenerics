@@ -6,6 +6,7 @@ dao.DVDLibrary interacts with FileIO to read and write a dto.DVD dao.Library
 
 import dto.DVD;
 
+import java.io.FileReader;
 import java.util.ArrayList;
 
 public class DVDLibrary implements Library<DVD> {
@@ -25,5 +26,13 @@ public class DVDLibrary implements Library<DVD> {
             }
         }
         return null;
+    }
+
+    public void readFromFile(String fileName) {
+
+    }
+
+    public void writeToFile(String fileName) {
+
     }
 }

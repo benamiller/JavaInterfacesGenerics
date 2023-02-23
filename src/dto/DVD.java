@@ -1,5 +1,7 @@
 package dto;
 
+import java.util.Arrays;
+
 /*
 Ben Miller - 2022-02-22
 This dto.DVD class represents a dto.DVD
@@ -19,7 +21,7 @@ public class DVD extends Media {
         this.studio = studio;
     }
 
-    public DVD(String mpaaRating, String director, Studio studio, String title, String releaseDate, String userNotes) {
+    public DVD(String mpaaRating, String director, Studio studio, String title, String releaseDate, String[] userNotes) {
         super(title, releaseDate, userNotes);
         this.mpaaRating = mpaaRating;
         this.director = director;
@@ -52,11 +54,15 @@ public class DVD extends Media {
 
     @Override
     public String toString() {
-        return  "Title: " + this.getTitle() + "\n"
+        return  "\n======== DVD ========\n"
+                + "Title: " + this.getTitle() + "\n"
                 + "Released: " + this.getReleaseDate() + "\n"
                 + "MPAA Rating: " + this.getMpaaRating() + "\n"
                 + "Director: " + this.getDirector() + "\n"
-                + "Studio: " + this.getStudio().toString() + "\n"
-                + "User ratings + notes: " + this.getUserNotes();
+                + "Studio:\n    "
+                    + "Name: " + this.getStudio().getName() + "\n    "
+                    + "Address: " + this.getStudio().getAddress().getCity() + ", " + this.getStudio().getAddress().getCountry() + ", " + this.getStudio().getAddress().getZip() + "\n"
+                + "User ratings + notes: " + Arrays.toString(this.getUserNotes()) + "\n"
+                + "=====================";
     }
 }
