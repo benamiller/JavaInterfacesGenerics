@@ -18,7 +18,21 @@ public class DVDLibrary implements Library<DVD> {
     private final ArrayList<DVD> dvdCollection= new ArrayList<DVD>();
     public void create(DVD dvd) {
         System.out.println("Adding DVD");
+
+        while(isDuplicate(dvd)) {
+            dvd.setTitle(dvd.getTitle() + " (copy)");
+        }
+
         dvdCollection.add(dvd);
+    }
+
+    public boolean isDuplicate(DVD dvd) {
+        for (DVD currentDVD : dvdCollection) {
+            if (dvd.getTitle().equalsIgnoreCase(currentDVD.getTitle())) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public void deleteByTitle(String title) {
@@ -30,14 +44,23 @@ public class DVDLibrary implements Library<DVD> {
         }
     }
 
+    /**
+     * Displays the DVD object with DVD's overridden toString method
+     * @param dvd
+     */
     public void displayInformation(DVD dvd) {
         for (DVD potentialDVDMatch : dvdCollection) {
-            if (dvd.getTitle().equals(potentialDVDMatch.getTitle())) {
+            if (dvd.getTitle().equalsIgnoreCase(potentialDVDMatch.getTitle())) {
                 System.out.println(dvd);
+                System.out.println();
             }
         }
     }
 
+    /**
+     * Read csv file and create DVD objects added to the ArrayList
+     * @param fileName
+     */
     public void readFromFile(String fileName) {
         Scanner sc = null;
         try {
@@ -65,6 +88,10 @@ public class DVDLibrary implements Library<DVD> {
         }
     }
 
+    /**
+     * Marshall and write to disk
+     * @param fileName
+     */
     public void writeDVDsToDisk(String fileName) {
         PrintWriter out;
 
@@ -87,6 +114,11 @@ public class DVDLibrary implements Library<DVD> {
         out.close();
     }
 
+    /**
+     * Marshall the DVD
+     * @param dvd
+     * @return String of marshalled DVD
+     */
     public String marshallDVD(DVD dvd) {
         String runningDVD;
         runningDVD = dvd.getTitle() + ","
@@ -113,6 +145,48 @@ public class DVDLibrary implements Library<DVD> {
     public void getAllDVDs() {
         for (DVD dvd : dvdCollection) {
             System.out.println(dvd);
+        }
+    }
+
+    public void getAllDVDTitles() {
+        for (DVD dvd : dvdCollection) {
+            System.out.println(dvd.getTitle());
+        }
+    }
+
+    public void editDVDPropertyByTitle(String title, int propertyToEdit, String updatedPropertyValue) {
+        for (DVD dvd : dvdCollection) {
+            if (!title.equalsIgnoreCase(dvd.getTitle())) {
+                continue;
+            }
+            switch (propertyToEdit) {
+                case 1:
+                    dvd.setTitle(updatedPropertyValue);
+                    break;
+                case 2:
+                    dvd.setReleaseDate(updatedPropertyValue);
+                    break;
+                case 3:
+                    dvd.setUserNotes(updatedPropertyValue);
+                    break;
+                case 4:
+                    dvd.setMpaaRating(updatedPropertyValue);
+                    break;
+                case 5:
+                    dvd.setDirector(updatedPropertyValue);
+                    break;
+                case 6:
+                    dvd.getStudio().setName(updatedPropertyValue);
+                    break;
+                case 7:
+                    dvd.getStudio().getAddress().setCity(updatedPropertyValue);
+                    break;
+                case 8:
+                    dvd.getStudio().getAddress().setCountry(updatedPropertyValue);
+                    break;
+                default:
+                    System.out.println("Not a valid property");
+            }
         }
     }
 }

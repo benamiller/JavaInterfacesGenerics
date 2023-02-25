@@ -16,7 +16,8 @@ public class DVDLibraryView {
         io.print("3. Remove an existing DVD");
         io.print("4. Edit an existing DVD");
         io.print("5. List all DVDs");
-        io.print("6. Exit");
+        io.print("6. List all DVD titles");
+        io.print("7. Exit");
     }
 
     public void printViewDVDBanner() {
@@ -32,7 +33,8 @@ public class DVDLibraryView {
     }
 
     public void printCreateDVDSuccessBanner() {
-        io.readString("Successfully added! Press enter to continue");
+        io.readString("Successfully added!");
+        io.print("");
     }
 
     public void printRemoveDVDBanner() {
@@ -40,7 +42,8 @@ public class DVDLibraryView {
     }
 
     public void printRemoveDVDSuccessBanner() {
-        io.print("Successfully removed! Press enter to continue");
+        io.print("Successfully removed!");
+        io.print("");
     }
 
     public void printEditDVDBanner() {
@@ -48,7 +51,8 @@ public class DVDLibraryView {
     }
 
     public void printEditDVDSuccessBanner() {
-        io.print("Successfully edited! Press enter to continue");
+        io.print("Successfully edited!");
+        io.print("");
     }
 
     public void printListDVDsBanner() {
@@ -56,7 +60,8 @@ public class DVDLibraryView {
     }
 
     public void printListDVDsSuccessBanner() {
-        io.print("DONE LISTING");
+        io.print("=================");
+        io.print("");
     }
 
     public void displayAllDVDs(List<DVD> dvds) {
@@ -87,17 +92,30 @@ public class DVDLibraryView {
     }
 
     public String getDVDTitle() {
-        String title = io.readString("Please enter the DVD title:");
-        return title;
+        return io.readString("Please enter the DVD title:");
     }
 
     public void print(String message) {
         io.print(message);
     }
 
-    public String getPropertyToEdit() {
+    public int getPropertyToEdit() {
         io.print("1. Title");
         io.print("2. Release date");
-        return io.readString("Select a property to edit");
+        io.print("3. Notes");
+        io.print("4. Rating");
+        io.print("5. Director");
+        io.print("6. Studio Name");
+        io.print("7. Studio City");
+        io.print("8. Studio Country");
+        return io.readInt("Select a property to edit");
+    }
+
+    public String shouldContinueEditing() {
+        return io.readString("Would you like to edit something else? (y/n)");
+    }
+
+    public String getNewPropertyValue() {
+        return io.readString("Enter the new updated value");
     }
 }
