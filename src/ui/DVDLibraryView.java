@@ -4,6 +4,8 @@ import dto.Address;
 import dto.DVD;
 import dto.Studio;
 
+import java.util.List;
+
 public class DVDLibraryView {
     UserIO io = new UserIO();
 
@@ -12,8 +14,9 @@ public class DVDLibraryView {
         io.print("1. View a DVD");
         io.print("2. Create a new DVD");
         io.print("3. Remove an existing DVD");
-        io.print("4. List all DVDs");
-        io.print("5. Exit");
+        io.print("4. Edit an existing DVD");
+        io.print("5. List all DVDs");
+        io.print("6. Exit");
     }
 
     public void printViewDVDBanner() {
@@ -40,12 +43,26 @@ public class DVDLibraryView {
         io.print("Successfully removed! Press enter to continue");
     }
 
+    public void printEditDVDBanner() {
+        io.print("==== Edit ====");
+    }
+
+    public void printEditDVDSuccessBanner() {
+        io.print("Successfully edited! Press enter to continue");
+    }
+
     public void printListDVDsBanner() {
         io.print("=== List DVDs ===");
     }
 
     public void printListDVDsSuccessBanner() {
-        io.readString("Press enter to continue");
+        io.print("DONE LISTING");
+    }
+
+    public void displayAllDVDs(List<DVD> dvds) {
+        for (DVD dvd : dvds) {
+            System.out.println(dvd);
+        }
     }
 
     public int readInt(String prompt) {
@@ -69,9 +86,18 @@ public class DVDLibraryView {
         return dvd;
     }
 
-    public String findDVDByName() {
+    public String getDVDTitle() {
         String title = io.readString("Please enter the DVD title:");
         return title;
     }
 
+    public void print(String message) {
+        io.print(message);
+    }
+
+    public String getPropertyToEdit() {
+        io.print("1. Title");
+        io.print("2. Release date");
+        return io.readString("Select a property to edit");
+    }
 }

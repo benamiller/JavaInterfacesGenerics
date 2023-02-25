@@ -7,7 +7,7 @@ a library/collection of items
  */
 public interface Library<T> {
     // Adds an item to the library
-    public void add(T libraryItem);
+    public void create(T libraryItem);
 
     // Removes a particular item from the library
     public void deleteByTitle(String libraryItemTitle);
