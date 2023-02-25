@@ -10,10 +10,10 @@ public interface Library<T> {
     public void add(T libraryItem);
 
     // Removes a particular item from the library
-    public void remove(T libraryItem);
+    public void deleteByTitle(String libraryItemTitle);
 
     // Displays the information for a particular item
-    public String displayInformation(T libraryItem);
+    public void displayInformation(T libraryItem);
 
 
 }

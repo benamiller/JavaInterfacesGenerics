@@ -21,7 +21,7 @@ public class DVD extends Media {
         this.studio = studio;
     }
 
-    public DVD(String mpaaRating, String director, Studio studio, String title, String releaseDate, String[] userNotes) {
+    public DVD(String mpaaRating, String director, Studio studio, String title, String releaseDate, String userNotes) {
         super(title, releaseDate, userNotes);
         this.mpaaRating = mpaaRating;
         this.director = director;
@@ -61,8 +61,8 @@ public class DVD extends Media {
                 + "Director: " + this.getDirector() + "\n"
                 + "Studio:\n    "
                     + "Name: " + this.getStudio().getName() + "\n    "
-                    + "Address: " + this.getStudio().getAddress().getCity() + ", " + this.getStudio().getAddress().getCountry() + ", " + this.getStudio().getAddress().getZip() + "\n"
-                + "User ratings + notes: " + Arrays.toString(this.getUserNotes()) + "\n"
+                    + "Address: " + this.getStudio().getAddress().getCity() + ", " + this.getStudio().getAddress().getCountry() + "\n"
+                + "User ratings + notes: " + this.getUserNotes() + "\n"
                 + "=====================";
     }
 }

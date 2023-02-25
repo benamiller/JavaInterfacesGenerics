@@ -2,12 +2,10 @@ package dto;
 
 public class Address {
     private String city;
-    private String zip;
     private String country;
 
-    public Address(String city, String zip, String country) {
+    public Address(String city, String country) {
         this.city = city;
-        this.zip = zip;
         this.country = country;
     }
 
@@ -17,14 +15,6 @@ public class Address {
 
     public void setCity(String city) {
         this.city = city;
-    }
-
-    public String getZip() {
-        return zip;
-    }
-
-    public void setZip(String zip) {
-        this.zip = zip;
     }
 
     public String getCountry() {
@@ -38,7 +28,6 @@ public class Address {
     @Override
     public String toString() {
         return "City: " + this.getCity() + "\n"
-                + "Country: " + this.getCountry() + "\n"
-                + "Zip Code: " + this.getZip();
+                + "Country: " + this.getCountry();
     }
 }

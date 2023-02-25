@@ -5,27 +5,38 @@ dao.DVDLibrary interacts with FileIO to read and write a dto.DVD dao.Library
  */
 
 import dto.DVD;
+import ui.DVDLibraryView;
 
 import java.io.FileReader;
 import java.util.ArrayList;
 
 public class DVDLibrary implements Library<DVD> {
-    private ArrayList<DVD> dvdCollection= new ArrayList<DVD>();
+
+    private final ArrayList<DVD> dvdCollection= new ArrayList<DVD>();
     public void add(DVD dvd) {
         dvdCollection.add(dvd);
     }
 
-    public void remove(DVD dvd) {
-        dvdCollection.remove(dvd);
-    }
-
-    public String displayInformation(DVD dvd) {
+    public void deleteByTitle(String title) {
         for (DVD potentialDVDMatch : dvdCollection) {
-            if (dvd.getTitle().equals(potentialDVDMatch.getTitle())) {
-                return dvd.toString();
+            if (title.equalsIgnoreCase(potentialDVDMatch.getTitle())) {
+                dvdCollection.remove(potentialDVDMatch);
             }
         }
-        return null;
+    }
+
+    public void displayInformation(DVD dvd) {
+        for (DVD potentialDVDMatch : dvdCollection) {
+            if (dvd.getTitle().equals(potentialDVDMatch.getTitle())) {
+                System.out.println(dvd);
+            }
+        }
+    }
+
+    public void listDVDs() {
+        for (DVD dvd : dvdCollection) {
+            System.out.println(dvd);
+        }
     }
 
     public void readFromFile(String fileName) {
