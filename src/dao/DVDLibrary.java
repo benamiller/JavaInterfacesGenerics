@@ -12,6 +12,7 @@ import java.util.ArrayList;
 
 public class DVDLibrary implements Library<DVD> {
 
+    private final DVDFileIO fileIO = new DVDFileIO();
     private final ArrayList<DVD> dvdCollection= new ArrayList<DVD>();
     public void add(DVD dvd) {
         dvdCollection.add(dvd);
