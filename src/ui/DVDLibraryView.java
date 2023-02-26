@@ -84,7 +84,7 @@ public class DVDLibraryView implements View {
     }
 
     public void printSaveDVDsSuccessBanner() {
-        io.print("Successfull saved!");
+        io.print("Successfully saved!");
         io.print("");
     }
 

@@ -60,8 +60,8 @@ public class App {
         }
 
         // Write data to file
-        System.out.println("Thanks for visiting your DVDLibrary!");
         saveDVDCollection();
+        System.out.println("Thanks for visiting your DVDLibrary!");
     }
 
     /**

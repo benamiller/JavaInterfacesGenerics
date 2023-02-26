@@ -1,4 +1,3 @@
 THE HOBBITT,11/20/2022,Brilliant,3.0,Peter Jackson,Ghibli,Vancouver,Canada
 Shaun of the Dead,03/02/2014,Amazing,4.0,Simon Pegg,Lionsgate,Sunnyvale,USA
-Notting Hill,10/31/2011,Crazy good,2.2,Roger Michell,Duncan,London,UK
-teuhoa,hutneohuoe,uhentohuoe,uetnohhuhoe,ueotnhhutoeh,ueohtnuoheu,ueotnuhnoet,uehonthuoe
+Notting Hill,10/31/2011,Crazy good,4.0,Roger Michell,Duncan,London,UK
