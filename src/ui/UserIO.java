@@ -14,6 +14,11 @@ public class UserIO {
         return scanner.nextLine();
     }
 
+    /**
+     * Ensures the user selects an integer
+     * @param prompt A string to be printed to indicate what the user should input
+     * @return An integer choice from the uer
+     */
     public int readInt(String prompt) {
         boolean invalidInput = true;
         int num = 0;

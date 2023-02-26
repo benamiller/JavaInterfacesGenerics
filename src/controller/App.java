@@ -49,6 +49,9 @@ public class App {
                     listDVDTitles();
                     break;
                 case 7:
+                    saveDVDCollection();
+                    break;
+                case 8:
                     shouldContinue = false;
                     break;
                 default:
@@ -58,8 +61,16 @@ public class App {
 
         // Write data to file
         System.out.println("Thanks for visiting your DVDLibrary!");
-        writeDVDsToDisk();
+        saveDVDCollection();
+    }
 
+    /**
+     * Write in-memory ArrayList to disk
+     */
+    public void saveDVDCollection() {
+        view.printSaveDVDsBanner();
+        library.writeDVDs(FILENAME);
+        view.printSaveDVDsSuccessBanner();
     }
 
     /**
@@ -100,13 +111,6 @@ public class App {
         view.printListDVDsBanner();
         library.getAllDVDTitles();
         view.printListDVDsSuccessBanner();
-    }
-
-    /**
-     * Write in-memory ArrayList to disk
-     */
-    public void writeDVDsToDisk() {
-        library.writeDVDsToDisk(FILENAME);
     }
 
     /**

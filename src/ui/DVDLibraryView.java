@@ -6,9 +6,13 @@ import dto.Studio;
 
 import java.util.List;
 
-public class DVDLibraryView {
+public class DVDLibraryView implements View {
     UserIO io = new UserIO();
 
+    /**
+     * Main menu
+     */
+    @Override
     public void printMenu() {
         io.print("Main Menu");
         io.print("1. View a DVD");
@@ -17,63 +21,90 @@ public class DVDLibraryView {
         io.print("4. Edit an existing DVD");
         io.print("5. List all DVDs");
         io.print("6. List all DVD titles");
-        io.print("7. Exit");
+        io.print("7. Save DVD Library");
+        io.print("8. Exit");
     }
 
+    @Override
     public void printViewDVDBanner() {
         io.print("==== View ====");
     }
 
+    @Override
     public void printViewDVDSuccessBanner() {
         io.print("Press enter to continue");
     }
 
+    @Override
     public void printCreateDVDBanner() {
         io.print("==== Create ====");
     }
 
+    @Override
     public void printCreateDVDSuccessBanner() {
-        io.readString("Successfully added!");
+        io.print("Successfully added!");
         io.print("");
     }
 
+    @Override
     public void printRemoveDVDBanner() {
         io.print("==== Remove ====");
     }
 
+    @Override
     public void printRemoveDVDSuccessBanner() {
         io.print("Successfully removed!");
         io.print("");
     }
 
+    @Override
     public void printEditDVDBanner() {
         io.print("==== Edit ====");
     }
 
+    @Override
     public void printEditDVDSuccessBanner() {
         io.print("Successfully edited!");
         io.print("");
     }
 
+    @Override
     public void printListDVDsBanner() {
         io.print("=== List DVDs ===");
     }
 
+    @Override
     public void printListDVDsSuccessBanner() {
         io.print("=================");
         io.print("");
     }
 
+    public void printSaveDVDsBanner() {
+        io.print("==== Save ====");
+    }
+
+    public void printSaveDVDsSuccessBanner() {
+        io.print("Successfull saved!");
+        io.print("");
+    }
+
+    @Override
     public void displayAllDVDs(List<DVD> dvds) {
         for (DVD dvd : dvds) {
             System.out.println(dvd);
         }
     }
 
+    @Override
     public int readInt(String prompt) {
         return io.readInt(prompt);
     }
 
+    /**
+     * Delegate getting user input to the io implementation class, and construct a DVD
+     * @return A DVD object created from user input
+     */
+    @Override
     public DVD makeDVDFromInfo() {
         String DVDTitle = io.readString("Please enter DVD title:");
         String DVDRelease = io.readString("Please enter the DVD release date (MM/DD/YYYY):");
@@ -91,6 +122,7 @@ public class DVDLibraryView {
         return dvd;
     }
 
+    @Override
     public String getDVDTitle() {
         return io.readString("Please enter the DVD title:");
     }
@@ -111,6 +143,10 @@ public class DVDLibraryView {
         return io.readInt("Select a property to edit");
     }
 
+    /**
+     * This facilitates editing multiple properties of the same DVD easily
+     * @return String representing the user choice to continue editing the same DVD
+     */
     public String shouldContinueEditing() {
         return io.readString("Would you like to edit something else? (y/n)");
     }
@@ -118,4 +154,5 @@ public class DVDLibraryView {
     public String getNewPropertyValue() {
         return io.readString("Enter the new updated value");
     }
+
 }

@@ -16,6 +16,12 @@ import java.util.Scanner;
 public class DVDLibrary implements Library<DVD> {
 
     private final ArrayList<DVD> dvdCollection= new ArrayList<DVD>();
+
+    /**
+     * A DVD, if the title is unique, is added to the collection.
+     * If the title is not unique, append (copy), similar to an OS's file explorer
+     * @param dvd The DVD to be added to the dvdCollection
+     */
     public void create(DVD dvd) {
         System.out.println("Adding DVD");
 
@@ -26,6 +32,13 @@ public class DVDLibrary implements Library<DVD> {
         dvdCollection.add(dvd);
     }
 
+    /**
+     * A helper method to ensure the title's of DVD objects can be treated as unique IDs.
+     * The method is used to append (copy) to any duplicate DVD titles, similar to an OS's
+     * file explorer
+     * @param dvd The DVD object whose title is validated as unique
+     * @return true if a DVD with the same title exists
+     */
     public boolean isDuplicate(DVD dvd) {
         for (DVD currentDVD : dvdCollection) {
             if (dvd.getTitle().equalsIgnoreCase(currentDVD.getTitle())) {
@@ -35,6 +48,10 @@ public class DVDLibrary implements Library<DVD> {
         return false;
     }
 
+    /**
+     * Delete a DVD by a unique (forced) title
+     * @param title The title of the DVD to be deleted
+     */
     public void deleteByTitle(String title) {
         for (DVD potentialDVDMatch : dvdCollection) {
             if (title.equalsIgnoreCase(potentialDVDMatch.getTitle())) {
@@ -46,7 +63,7 @@ public class DVDLibrary implements Library<DVD> {
 
     /**
      * Displays the DVD object with DVD's overridden toString method
-     * @param dvd
+     * @param dvd The DVD object which should be displayed
      */
     public void displayInformation(DVD dvd) {
         for (DVD potentialDVDMatch : dvdCollection) {
@@ -90,9 +107,9 @@ public class DVDLibrary implements Library<DVD> {
 
     /**
      * Marshall and write to disk
-     * @param fileName
+     * @param fileName The name of the file to which marshalled data should be written
      */
-    public void writeDVDsToDisk(String fileName) {
+    public void writeDVDs(String fileName) {
         PrintWriter out;
 
         try {
@@ -116,7 +133,7 @@ public class DVDLibrary implements Library<DVD> {
 
     /**
      * Marshall the DVD
-     * @param dvd
+     * @param dvd The DVD object to be marshalled
      * @return String of marshalled DVD
      */
     public String marshallDVD(DVD dvd) {
@@ -133,6 +150,11 @@ public class DVDLibrary implements Library<DVD> {
         return runningDVD;
     }
 
+    /**
+     * Find a DVD, given a DVD title
+     * @param title The title property of a DVD
+     * @return DVD or null if no DVD is found
+     */
     public DVD findDVDByTitle(String title) {
         for (DVD dvd: dvdCollection) {
             if (title.equalsIgnoreCase(dvd.getTitle())) {
@@ -142,18 +164,31 @@ public class DVDLibrary implements Library<DVD> {
         return null;
     }
 
+    /**
+     * Print out each DVD object in the in-memory ArrayList
+     */
     public void getAllDVDs() {
         for (DVD dvd : dvdCollection) {
             System.out.println(dvd);
         }
     }
 
+    /**
+     * Print out each DVD title only
+     * This method helps when searching for a particular DVD to edit
+     */
     public void getAllDVDTitles() {
         for (DVD dvd : dvdCollection) {
             System.out.println(dvd.getTitle());
         }
     }
 
+    /**
+     * Given a DVD title, updated the provided property with the given value
+     * @param title The title of the DVD to be updated
+     * @param propertyToEdit The name of the property to be updated
+     * @param updatedPropertyValue The value that should replace the previous property's value
+     */
     public void editDVDPropertyByTitle(String title, int propertyToEdit, String updatedPropertyValue) {
         for (DVD dvd : dvdCollection) {
             if (!title.equalsIgnoreCase(dvd.getTitle())) {
